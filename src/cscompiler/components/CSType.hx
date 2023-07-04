@@ -90,7 +90,7 @@ class CSType extends CSBase {
 			case "Void": "void";
 			case "Int": "int";
 			case "UInt": "uint";
-			case "Float": "double";
+			case "Float": "float";
 			case "Bool": "bool";
 			case _: null;
 		}

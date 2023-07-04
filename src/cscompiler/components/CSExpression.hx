@@ -94,7 +94,8 @@ class CSExpression extends CSBase {
 				// TODO: Lambda?
 			}
 			case TVar(tvar, maybeExpr): {
-				result = compiler.compileType(tvar.t, expr.pos) + " " + compiler.compileVarName(tvar.name, maybeExpr);
+				var compileType = compiler.compileType(tvar.t, expr.pos);
+				result = compileType + " " + compiler.compileVarName(tvar.name, maybeExpr);
 
 				// Not guaranteed to have expression, be careful!
 				if(maybeExpr != null) {
@@ -235,7 +236,7 @@ class CSExpression extends CSBase {
 	function constantToCS(constant: TConstant): String {
 		return switch(constant) {
 			case TInt(i): Std.string(i);
-			case TFloat(s): s;
+			case TFloat(s): s+"f";
 			case TString(s): compileString(s);
 			case TBool(b): b ? "true" : "false";
 			case TNull: "null";
